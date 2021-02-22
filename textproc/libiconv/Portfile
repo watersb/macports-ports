@@ -34,7 +34,10 @@ depends_build           port:gperf
 
 patchfiles \
     patch-src-Makefile.in-darwin.diff \
-    patch-c99.diff
+    patch-c99.diff \
+	warnings-cleanup.diff
+
+configure.cflags-append	-Werror
 
 set myprefix ${prefix}
 
