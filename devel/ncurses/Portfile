@@ -83,6 +83,10 @@ post-destroot {
 
     # see https://trac.macports.org/ticket/59992
     xinstall -m 0644 ${filespath}/module.modulemap ${destroot}${prefix}/include
+	
+	
+	# thin the terminfo library
+	# system "${filespath}/uncruft-terminfo.zsh ${destroot} ${prefix}"
 }
 
 livecheck.regex ${name}-(\[\\d.-\]+)${extract.suffix}
