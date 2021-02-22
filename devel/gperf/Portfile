@@ -25,16 +25,23 @@ installs_libs   no
 
 configure.args  --infodir=${prefix}/share/info
 
+# gperf's ASCII-case insensitive memcmp replacement
+# uses conditional format strings, which may be empty
+configure.cxxflags-append	-Wno-format-zero-length
+
+# gperf's use of the boolean idiom
+#  TEST-THIS | TEST-THAT ? DO-IF-EITHER-IS-TRUE : ELSE
+# the 'OR' operator '|' without enclosing parentheses
+# makes clang nervous. Here is a patch that might help.
+patchfiles	warnings-cleanup.patch
+ 
+
 # This port is used by clang-3.4 to bootstrap libcxx
 subport ${name}-bootstrap {
     configure.pre_args      --prefix=${prefix}/libexec/libcxx-bootstrap
     configure.args          --infodir=${prefix}/libexec/libcxx-bootstrap/share/info
-    configure.cxx_stdlib    libstdc++
+    configure.cxx_stdlib    libc++
     compiler.whitelist      clang llvm-gcc-4.2 gcc-4.2 apple-gcc-4.2
-    if {${os.platform} eq "darwin" && ${os.major} >= 18} {
-        # libstdc++ can't be used on Mojave and later
-        known_fail          yes
-    }
 }
 # Also needed by later clangs.
 if {${os.platform} eq "darwin" && ${os.major} < 11 && ${cxx_stdlib} eq "libc++"} {

@@ -1,0 +1,65 @@
+--- src/output.cc.orig	2021-01-29 02:59:52.000000000 -0700
++++ src/output.cc	     2021-01-29 02:47:38.000000000 -0700
+@@ -81,7 +81,7 @@
+ static const char *
+ smallest_integral_type (int min, int max)
+ {
+-  if (option[ANSIC] | option[CPLUSPLUS])
++  if ((option[ANSIC] | option[CPLUSPLUS]))
+     if (min >= SCHAR_MIN && max <= SCHAR_MAX) return "signed char";
+   if (min >= SHRT_MIN && max <= SHRT_MAX) return "short";
+   return "int";
+@@ -322,7 +322,7 @@
+                "(s1, s2)\n"
+           "     %sconst char *s1;\n"
+           "     %sconst char *s2;\n" :
+-          option[ANSIC] | option[CPLUSPLUS] ?
++          (option[ANSIC] | option[CPLUSPLUS]) ?
+                "(%sconst char *s1, %sconst char *s2)\n" :
+           "",
+           register_scs, register_scs);
+@@ -375,7 +375,7 @@
+           "     %sconst char *s1;\n"
+           "     %sconst char *s2;\n"
+           "     %ssize_t n;\n" :
+-          option[ANSIC] | option[CPLUSPLUS] ?
++          (option[ANSIC] | option[CPLUSPLUS]) ?
+                "(%sconst char *s1, %sconst char *s2, %ssize_t n)\n" :
+           "",
+           register_scs, register_scs, register_scs);
+@@ -436,7 +436,7 @@
+           "     %sconst char *s1;\n"
+           "     %sconst char *s2;\n"
+           "     %ssize_t n;\n" :
+-          option[ANSIC] | option[CPLUSPLUS] ?
++          (option[ANSIC] | option[CPLUSPLUS]) ?
+                "(%sconst char *s1, %sconst char *s2, %ssize_t n)\n" :
+           "",
+           register_scs, register_scs, register_scs);
+@@ -837,7 +837,7 @@
+                  "(str, len)\n"
+             "     %sconst char *str;\n"
+             "     %ssize_t len;\n" :
+-          option[ANSIC] | option[CPLUSPLUS] ?
++          (option[ANSIC] | option[CPLUSPLUS]) ?
+                  "(%sconst char *str, %ssize_t len)\n" :
+           "",
+           register_scs, register_scs);
+@@ -1993,7 +1993,7 @@
+                  "(str, len)\n"
+             "     %sconst char *str;\n"
+             "     %ssize_t len;\n" :
+-          option[ANSIC] | option[CPLUSPLUS] ?
++          (option[ANSIC] | option[CPLUSPLUS]) ?
+                  "(%sconst char *str, %ssize_t len)\n" :
+           "",
+           register_scs, register_scs);
+@@ -2042,7 +2042,7 @@
+   else
+     register_scs = "register ";
+ 
+-  if (option[C] | option[ANSIC] | option[CPLUSPLUS])
++  if (option[C] | (option[ANSIC] | option[CPLUSPLUS]))
+     {
+       const_always = "const ";
+       const_readonly_array = (option[CONST] ? "const " : "");
