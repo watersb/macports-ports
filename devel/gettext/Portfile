@@ -163,6 +163,11 @@ subport ${name}-tools-libs {
     # libasprintf should be getting built again. Might be the same as
     # https://savannah.gnu.org/bugs/?58669
     configure.args-append   --disable-libasprintf
+	
+	# Prevent the vma-iter test from failing on Apple Silicon (aarch64)
+	# TODO: report this to upstream developers; there should be a
+	# proper platform check for macOS 64-bit ARM in autoconf.
+	patchfiles	aarch64.patch
 
     post-destroot {
         # Remove the executables and the libraries provided
@@ -237,6 +242,11 @@ if {${subport} eq ${name}} {
     # libasprintf should be getting built again. Might be the same as
     # https://savannah.gnu.org/bugs/?58669
     configure.args-append   --disable-libasprintf
+
+	# Prevent the vma-iter test from failing on Apple Silicon (aarch64)
+	# TODO: report this to upstream developers; there should be a
+	# proper platform check for macOS 64-bit ARM in autoconf.
+	patchfiles	aarch64.patch
 
     post-destroot {
         # Remove files already installed by gettext-runtime.
