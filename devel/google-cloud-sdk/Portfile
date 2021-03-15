@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                google-cloud-sdk
-version             329.0.0
+version             331.0.0
 revision            0
 categories          devel python
 license             Apache-2
@@ -21,14 +21,14 @@ supported_archs     i386 x86_64
 
 if { ${configure.build_arch} eq "i386" } {
     distname        ${name}-${version}-darwin-x86
-    checksums       rmd160  7789e4c4b2c4ff3dbc0dd6b6e97f8f8de1fc1373 \
-                    sha256  da72313f5762ddc56ce121e2f32c5af2fdf7c93a3667104ccd2e769d0f44d689 \
-                    size    87893287
+    checksums       rmd160  bb7445af8dcf4b1d996942f2b72a06cf7c7c8cee \
+                    sha256  080c661ff410cd290830fc2ceb88ce52a0a03161ce27d1294b6b613e5f90e054 \
+                    size    88219612
 } elseif { ${configure.build_arch} eq "x86_64" } {
     distname        ${name}-${version}-darwin-x86_64
-    checksums       rmd160  c91dac33946db91a0cb33856b0b10ab67c699039 \
-                    sha256  1edda5cc0168e8c350e56ffbec1b5b78638e2c0a48e5dd88699d89ccfb35d688 \
-                    size    110376929
+    checksums       rmd160  3a675277726c99c3409213af711dbc78c624a79e \
+                    sha256  32c7b961f4c3d18f772a8900c9bc1300e7f81c0c05d71f93b770a222f00490ba \
+                    size    110705434
 }
 
 homepage            https://cloud.google.com/sdk/
@@ -55,6 +55,7 @@ variant alpha description {Add gcloud CLI Alpha Commands} { dict set variant_to_
 variant anthos_auth description {Add Anthos auth} { dict set variant_to_component anthos_auth anthos-auth }
 variant app_engine_go description {Add App Engine Go Extensions} { dict set variant_to_component app_engine_go app-engine-go }
 variant app_engine_java description {Add gcloud app Java Extensions} { dict set variant_to_component app_engine_java app-engine-java }
+variant app_engine_php description {Add gcloud app PHP Extensions} { dict set variant_to_component app_engine_php app-engine-php }
 variant app_engine_python description {Add gcloud app Python Extensions} { dict set variant_to_component app_engine_python app-engine-python }
 variant app_engine_python_extras description {Add gcloud app Python Extensions (Extra Libraries)} { dict set variant_to_component app_engine_python_extras app-engine-python-extras }
 variant appctl description {Add Appctl} { dict set variant_to_component appctl appctl }

@@ -5,11 +5,10 @@ PortGroup           github 1.0
 
 categories          sysutils
 
-github.setup        cantino mcfly 0.5.3 v
+github.setup        cantino mcfly 0.5.5 v
 revision            0
 
 platforms           darwin
-supported_archs     x86_64
 
 license             MIT
 
@@ -25,14 +24,17 @@ long_description    McFly replaces your default Ctrl-R shell history search \
                     in real time with a small neural network.
 
 checksums           ${distname}${extract.suffix} \
-                    rmd160  afce717b784b9ddaaf91ca86d9f38e5e33d7eaba \
-                    sha256  aad693c8b1d0db5794dbf7ded27c05ae108c32454d374b93813afc082301f84b \
-                    size    201882
+                    rmd160  13334655d4a54fda82fae3c872d1216ab0c10b8e \
+                    sha256  2314099a550fab2972aec1f9ca87837c07eb82a096c6827e3d6b3ef12e153927 \
+                    size    202639
 
 set mf_share_dir    ${prefix}/share/${name}
 
 destroot {
-    xinstall -m 0755 {*}[glob ${worksrcpath}/target/*/release/${name}] ${destroot}${prefix}/bin/
+    xinstall -m 0755 \
+        {*}[glob ${worksrcpath}/target/*/release/${name}] \
+        ${destroot}${prefix}/bin/
+
     xinstall -d ${destroot}${mf_share_dir}
     xinstall -m 0644 ${worksrcpath}/${name}.bash ${destroot}${mf_share_dir}/
     xinstall -m 0644 ${worksrcpath}/${name}.fish ${destroot}${mf_share_dir}/

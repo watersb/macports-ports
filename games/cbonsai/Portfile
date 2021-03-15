@@ -4,7 +4,8 @@ PortSystem          1.0
 PortGroup           gitlab   1.0
 PortGroup           makefile 1.0
 
-gitlab.setup        jallbrit cbonsai 1.0.0 v
+gitlab.setup        jallbrit cbonsai 1.0.4 v
+epoch               1
 revision            0
 
 description         grow bonsai trees in your terminal
@@ -23,9 +24,9 @@ installs_libs       no
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  2d149228b93580cdb576ab65fa97a370358d25c4 \
-                    sha256  d0c4e4815a3aabfb057d5e80b27606e740e38f2629bb932b6c11f5ec39caa063 \
-                    size    18451
+checksums           rmd160  7c09c9b195553a9b1fc916217973009586616b7f \
+                    sha256  ee8a0631c57884ddaa6be19cdba39185dede9b68bc53b72b608b90a2c9abd147 \
+                    size    19060
 
 depends_build       port:pkgconfig
 depends_lib         port:ncurses
